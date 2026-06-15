@@ -1,11 +1,9 @@
-# Classe mãe
 class Funcionario:
     def __init__(self, nome, matricula, salario_fixo):
         self.__nome = nome
         self.__matricula = matricula
         self.set_salario_fixo(salario_fixo)
 
-    # Getters
     def get_nome(self):
         return self.__nome
 
@@ -15,36 +13,28 @@ class Funcionario:
     def get_salario_fixo(self):
         return self.__salario_fixo
 
-    # Setter com validação
-    def set_salario_fixo(self, salario_fixo):
-        if salario_fixo >= 0:
-            self.__salario_fixo = salario_fixo
-        else:
-            print("Erro: salário não pode ser negativo.")
+    def set_salario_fixo(self, valor):
+        if valor < 0:
+            print("Aviso: salário inválido. Ajustado para 0.")
             self.__salario_fixo = 0
+        else:
+            self.__salario_fixo = valor
 
     def calcular_salario(self):
-        pass
+        return 0
 
-    def exibir(self):
-        print(
-            f"Nome: {self.get_nome()} | "
-            f"Matricula: {self.get_matricula()} | "
-            f"Tipo: {self.__class__.__name__} | "
-            f"Salario: R$ {self.calcular_salario():.2f}"
-        )
+    def exibir_dados(self):
+        print(f"{self.get_nome()} ({self.get_matricula()}) - "
+              f"{self.__class__.__name__} - "
+              f"R$ {self.calcular_salario():.2f}")
 
 
-# Classe filha CLT
 class CLT(Funcionario):
-    def __init__(self, nome, matricula, salario_fixo):
-        super().__init__(nome, matricula, salario_fixo)
-
     def calcular_salario(self):
         return self.get_salario_fixo()
 
 
-# Classe filha Vendedor
+
 class Vendedor(Funcionario):
     def __init__(self, nome, matricula, salario_fixo, vendas):
         super().__init__(nome, matricula, salario_fixo)
@@ -54,24 +44,23 @@ class Vendedor(Funcionario):
         return self.__vendas
 
     def calcular_salario(self):
-        return self.get_salario_fixo() + (self.get_vendas() * 0.10)
+        bonus = self.get_vendas() * 0.10
+        return self.get_salario_fixo() + bonus
 
 
-# Classe filha Gerente
+
 class Gerente(Funcionario):
-    def __init__(self, nome, matricula, salario_fixo):
-        super().__init__(nome, matricula, salario_fixo)
-
     def calcular_salario(self):
         return self.get_salario_fixo() + 1500
 
 
-# Programa principal
-f1 = CLT("Ana", "001", 3000)
-f2 = Vendedor("Bruno", "002", 2000, 12000)
-f3 = Gerente("Carla", "003", 5000)
 
-funcionarios = [f1, f2, f3]
+if __name__ == "__main__":
+    funcionarios = [
+        CLT("Ana", "001", 3000),
+        Vendedor("Bruno", "002", 2000, 12000),
+        Gerente("Carla", "003", 5000)
+    ]
 
-for funcionario in funcionarios:
-    funcionario.exibir()
+    for f in funcionarios:
+        f.exibir_dados()
