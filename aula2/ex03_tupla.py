@@ -1,0 +1,5 @@
+numeros = (4, 7, 2, 9, 1, 5)
+numero7 = numeros.count(7)
+posicao9 = numeros.index(9)
+print("Quantidade que o numero 7 aparece: ", numero7)
+print("Posicao do numero 9: ".posicao9)
