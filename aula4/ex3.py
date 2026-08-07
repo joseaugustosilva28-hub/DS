@@ -1,26 +1,24 @@
-class ContaBancaria:
-    def __init__(self, titular, saldo):
-        self.titular = titular
-        self.saldo = saldo
+class Carro:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+        self.velocidade = 0
 
-    def depositar(self, valor):
-        self.saldo = self.saldo + valor
+    def acelerar(self):
+        self.velocidade = self.velocidade + 10
 
-    def sacar(self, valor):
-        if valor <= self.saldo:
-            self.saldo = self.saldo - valor
-        else:
-            print("Saldo insuficiente")
+    def frear(self):
+        if self.velocidade > 0:
+            self.velocidade = self.velocidade - 10
 
-    def extrato(self):
-        print("Titular:", self.titular)
-        print("Saldo:", self.saldo)
+            if self.velocidade < 0:
+                self.velocidade = 0
 
+carro = Carro("Fiat", "Uno")
 
-conta = ContaBancaria("João", 500)
+carro.acelerar()
+carro.acelerar()
+carro.acelerar()
+carro.frear()
 
-conta.depositar(200)
-conta.sacar(100)
-conta.sacar(700)
-
-conta.extrato()
+print("Velocidade final:", carro.velocidade)
