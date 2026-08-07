@@ -28,3 +28,10 @@ def criar_produto():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+#json
+{
+  "id": 2,
+  "nome": "Teclado",
+  "preco": 100
+}
