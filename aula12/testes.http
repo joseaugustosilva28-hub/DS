@@ -1,0 +1,26 @@
+### Criar tarefa
+POST http://127.0.0.1:5000/tarefas
+Content-Type: application/json
+
+{
+    "titulo": "Estudar Flask",
+    "feita": 0
+}
+
+
+### Listar tarefas
+GET http://127.0.0.1:5000/tarefas
+
+
+### Atualizar tarefa
+PUT http://127.0.0.1:5000/tarefas/1
+Content-Type: application/json
+
+{
+    "titulo": "Estudar SQLite",
+    "feita": 1
+}
+
+
+### Apagar tarefa
+DELETE http://127.0.0.1:5000/tarefas/1
