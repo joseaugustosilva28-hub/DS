@@ -25,3 +25,19 @@ def criar_tarefa():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+#JSON
+{
+  "titulo": "Estudar Flask",
+  "feita": false
+}
+
+{
+  "titulo": "Fazer atividade",
+  "feita": true
+}
+
+{
+  "titulo": "Enviar trabalho",
+  "feita": false
+}
