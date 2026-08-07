@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "nome": "mouse",
+  "preco": 50.00,
+  "disponivel": true
+}
