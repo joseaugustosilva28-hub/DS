@@ -1,0 +1,161 @@
+
+## 3. `testes.http`
+
+Esse arquivo pode ser aberto diretamente no **VS Code** com uma extensão como REST Client.
+
+```http
+### ==========================================
+### CATEGORIAS
+### ==========================================
+
+### Listar categorias
+GET http://127.0.0.1:5000/categorias
+
+
+### Criar categoria
+POST http://127.0.0.1:5000/categorias
+Content-Type: application/json
+
+{
+    "nome": "Bebidas"
+}
+
+
+### Criar outra categoria
+POST http://127.0.0.1:5000/categorias
+Content-Type: application/json
+
+{
+    "nome": "Lanches"
+}
+
+
+### Buscar categoria por ID
+GET http://127.0.0.1:5000/categorias/1
+
+
+### Atualizar categoria
+PUT http://127.0.0.1:5000/categorias/1
+Content-Type: application/json
+
+{
+    "nome": "Bebidas Geladas"
+}
+
+
+### ==========================================
+### PRODUTOS
+### ==========================================
+
+### Listar produtos
+GET http://127.0.0.1:5000/produtos
+
+
+### Criar produto
+POST http://127.0.0.1:5000/produtos
+Content-Type: application/json
+
+{
+    "nome": "Suco de Laranja",
+    "preco": 8.50,
+    "categoria_id": 1
+}
+
+
+### Criar outro produto
+POST http://127.0.0.1:5000/produtos
+Content-Type: application/json
+
+{
+    "nome": "Refrigerante",
+    "preco": 7.00,
+    "categoria_id": 1
+}
+
+
+### Criar produto de outra categoria
+POST http://127.0.0.1:5000/produtos
+Content-Type: application/json
+
+{
+    "nome": "X-Burger",
+    "preco": 18.00,
+    "categoria_id": 2
+}
+
+
+### Buscar produto por ID
+GET http://127.0.0.1:5000/produtos/1
+
+
+### Atualizar produto
+PUT http://127.0.0.1:5000/produtos/1
+Content-Type: application/json
+
+{
+    "nome": "Suco de Laranja 500ml",
+    "preco": 9.50,
+    "categoria_id": 1
+}
+
+
+### ==========================================
+### JOIN
+### ==========================================
+
+### Produtos com nome da categoria
+GET http://127.0.0.1:5000/produtos/detalhes
+
+
+### ==========================================
+### FILTROS
+### ==========================================
+
+### Produtos de uma categoria
+GET http://127.0.0.1:5000/categorias/1/produtos
+
+
+### Buscar produto pelo nome
+GET http://127.0.0.1:5000/produtos/busca?nome=suco
+
+
+### ==========================================
+### TESTES DE ERRO
+### ==========================================
+
+### Categoria inexistente - deve retornar 404
+GET http://127.0.0.1:5000/categorias/999
+
+
+### Produto inexistente - deve retornar 404
+GET http://127.0.0.1:5000/produtos/999
+
+
+### Criar categoria sem nome - deve retornar 400
+POST http://127.0.0.1:5000/categorias
+Content-Type: application/json
+
+{
+}
+
+
+### Criar produto sem dados - deve retornar 400
+POST http://127.0.0.1:5000/produtos
+Content-Type: application/json
+
+{
+}
+
+
+### ==========================================
+### DELETE
+### ==========================================
+
+### Excluir produto
+DELETE http://127.0.0.1:5000/produtos/2
+
+
+### Excluir categoria
+### Devido ao ON DELETE CASCADE,
+### os produtos dessa categoria também serão excluídos.
+DELETE http://127.0.0.1:5000/categorias/2
