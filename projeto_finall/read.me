@@ -1,0 +1,51 @@
+# API de Loja
+
+Projeto final desenvolvido com Flask e SQLite para gerenciamento de categorias e produtos.
+
+## Tema
+
+O tema escolhido foi uma loja.
+
+A API possui duas tabelas relacionadas:
+
+- Categorias
+- Produtos
+
+A tabela `categorias` é a tabela pai e a tabela `produtos` é a tabela filha.
+
+Cada produto pertence a uma categoria através do campo `categoria_id`.
+
+## Tecnologias
+
+- Python
+- Flask
+- SQLite
+- JSON
+- API REST
+
+## Banco de dados
+
+A tabela `categorias` possui:
+
+- `id`
+- `nome`
+
+A tabela `produtos` possui:
+
+- `id`
+- `nome`
+- `preco`
+- `categoria_id`
+
+O campo `categoria_id` é uma FOREIGN KEY que se relaciona com o campo `id` da tabela `categorias`.
+
+Também foi utilizado `ON DELETE CASCADE`. Dessa forma, quando uma categoria é excluída, os produtos relacionados a ela também são excluídos.
+
+## Como executar
+
+É necessário ter Python instalado.
+
+Instale o Flask com:
+
+```bash
+pip install flask
